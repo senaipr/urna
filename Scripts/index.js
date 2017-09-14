@@ -11,7 +11,7 @@ function inputValor(digito) {
 
     if ($.trim($("#digito1").val()) != "" && $.trim($("#digito2").val()) != "") {
         $.ajax({
-            url: "../WebMethods.asmx/MeuVoto",
+            url: "http://urna.tgnandrade.com.br/WebMethods.asmx/MeuVoto",
             type: "POST",
             contentType: "application/json; charset=utf-8",
             data: JSON.stringify({ digito1: $.trim($("#digito1").val()), digito2: $.trim($("#digito2").val()) }),
@@ -35,7 +35,7 @@ function inputValor(digito) {
 function confirmarVoto() {
     if ($.trim($("#digito1").val()) != "" && $.trim($("#digito2").val()) != "") {
         $.ajax({
-            url: "../WebMethods.asmx/Salvar",
+            url: "http://urna.tgnandrade.com.br/WebMethods.asmx/Salvar",
             type: "POST",
             contentType: "application/json; charset=utf-8",
             data: JSON.stringify({ digito1: $.trim($("#digito1").val()), digito2: $.trim($("#digito2").val()) }),
@@ -80,7 +80,7 @@ function rebindAllFunctions() {
         e.preventDefault();
         e.stopPropagation();
         $.ajax({
-            url: "../WebMethods.asmx/Salvar",
+            url: "http://urna.tgnandrade.com.br/WebMethods.asmx/Salvar",
             type: "POST",
             contentType: "application/json; charset=utf-8",
             data: JSON.stringify({ digito1: "", digito2: "" }),
