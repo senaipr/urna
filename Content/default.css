@@ -1,0 +1,151 @@
+﻿.negrito {
+    font-weight: bold;
+}
+
+.spanVoto {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+@media only screen and (max-width : 767px) {
+    h1 {
+        font-size: 28px !important;
+    }
+}
+
+.spanFim {
+    font-weight: bold;
+}
+
+@media only screen and (max-width : 767px) {
+    .spanFim {
+        font-size: 100px;
+    }
+}
+
+@media only screen and (min-width : 768px) {
+    .spanFim {
+        font-size: 150px;
+    }
+}
+
+.principal {
+    border: 1px solid black;
+    margin: 25px 10px;
+}
+
+.btn-number {
+    margin-bottom: 5px;
+    border-color: none;
+    background-color: #000000 !important;
+    color: #ffffff !important;
+    font-weight: bold;
+    font-size: 28px;
+}
+
+@media only screen and (max-width : 767px) {
+    .btn-number {
+        width: 50px !important;
+        font-size: 24px;
+    }
+}
+
+@media only screen and (min-width : 768px) {
+    .btn-number {
+        margin-top: 5px;
+        height: 70px !important;
+        width: 70px !important;
+    }
+}
+
+.btn-acao {
+    margin-top: 5px;
+    padding: 0px !important;
+    width: 100%;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+@media only screen and (max-width : 767px) {
+    .btn-acao {
+        font-size: 12px;
+        height: 45px !important;
+    }
+}
+
+@media only screen and (min-width : 768px) {
+    .btn-acao {
+        font-size: 14px;
+        height: 60px !important;
+    }
+}
+
+.lbl {
+    font-size: 20px;
+}
+
+.rodape {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.mytxt {
+    border: 1px solid black;
+    height: 60px;
+}
+
+hr {
+    margin-top: 5px !important;
+    margin-bottom: 5px !important;
+}
+
+.esquerda {
+    border-right: 1px solid black;
+}
+
+.direita {
+    padding: 20px 10px;
+}
+
+/*@media only screen and (min-width : 768px) {*/
+.direita {
+    border-left: 1px solid black;
+}
+/*}*/
+
+input[type='text'] {
+    vertical-align: middle;
+    font-weight: bold;
+    width: 50px;
+}
+
+@media only screen and (max-width : 1024px) {
+    input[type='text'] {
+        text-align: center;
+        font-size: 18px;
+    }
+}
+
+@media only screen and (min-width : 1025px) {
+    input[type='text'] {
+        text-align: center;
+        font-size: 48px;
+    }
+}
+
+.corrige {
+    background-color: #FFA500 !important;
+    border-color: #FF8C00 !important;
+}
+
+@media only screen and (min-width : 768px) {
+    .centralizarFim {
+        padding-top: 20%;
+    }
+}
+
+@media only screen and (max-width : 767px) {
+    .centralizarFim {
+        padding-top: 60%;
+    }
+}
