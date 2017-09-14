@@ -2,6 +2,11 @@
     rebindAllFunctions();
 });
 
+String.prototype.replaceAll = function (search, replacement) {
+    var target = this;
+    return target.replace(new RegExp(search, 'g'), replacement);
+};
+
 $.jmsajaxurl = function (options) {
     var url = options.url;
     url += "/" + options.method;
@@ -9,7 +14,7 @@ $.jmsajaxurl = function (options) {
         var data = "";
         for (var i in options.data) {
             if (data != "") {
-                data += "&"; data += i + "=" + (msJSON.stringify(options.data[i]).replace("\"", ""));
+                data += "&"; data += i + "=" + msJSON.stringify(options.data[i]);
             }
         }
         url += "?" + data; data = null; options.data = "{}";
@@ -29,7 +34,7 @@ function inputValor(digito) {
             url: "https://urna.tgnandrade.com.br/WebMethods.asmx",
             method: "MeuVotoJsonp",
             data: { digito1: $.trim($("#digito1").val()), digito2: $.trim($("#digito2").val()) }
-        });
+        }).replaceAll("\"", "");
         console.log(url);
 
         $.ajax({
