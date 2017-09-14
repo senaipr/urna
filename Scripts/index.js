@@ -11,13 +11,14 @@ function inputValor(digito) {
 
     if ($.trim($("#digito1").val()) != "" && $.trim($("#digito2").val()) != "") {
         $.ajax({
-            url: "https://urna.tgnandrade.com.br/WebMethods.asmx/MeuVoto",
+            url: "https://urna.tgnandrade.com.br/WebMethods.asmx/MeuVotoJsonp",
             type: "POST",
             crossDomain: true,
             contentType: "application/json; charset=utf-8",
             data: JSON.stringify({ digito1: $.trim($("#digito1").val()), digito2: $.trim($("#digito2").val()) }),
             dataType: "jsonp",
             success: function (result) {
+                console.log(result);
                 var obj = eval("(" + result.d + ")");
                 if (obj != null && obj != undefined) {
                     $("#lblNome").text("NOME: " + obj.Nome);
