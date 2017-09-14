@@ -16,7 +16,7 @@ function inputValor(digito) {
 			crossDomain: true,
             contentType: "application/json; charset=utf-8",
             data: JSON.stringify({ digito1: $.trim($("#digito1").val()), digito2: $.trim($("#digito2").val()) }),
-            dataType: "json",
+            dataType: "jsonp",
             success: function (result) {
                 var obj = eval("(" + result.d + ")");
                 if (obj != null && obj != undefined) {
@@ -41,7 +41,7 @@ function confirmarVoto() {
 			crossDomain: true,
             contentType: "application/json; charset=utf-8",
             data: JSON.stringify({ digito1: $.trim($("#digito1").val()), digito2: $.trim($("#digito2").val()) }),
-            dataType: "json",
+            dataType: "jsonp",
             success: function (result) {
                 var obj = eval("(" + result.d + ")");
                 if (obj != null && obj != undefined) {
@@ -87,7 +87,7 @@ function rebindAllFunctions() {
 			crossDomain: true,
             contentType: "application/json; charset=utf-8",
             data: JSON.stringify({ digito1: "", digito2: "" }),
-            dataType: "json",
+            dataType: "jsonp",
             success: function (result) {
                 var obj = eval("(" + result.d + ")");
                 if (obj != null && obj != undefined) {

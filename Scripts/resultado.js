@@ -4,7 +4,7 @@
         type: "POST",
 		crossDomain: true,
         contentType: "application/json; charset=utf-8",
-        dataType: "json",
+        dataType: "jsonp",
         success: function (result) {
             $("#result").html(result.d);
         },
@@ -23,7 +23,7 @@ $(function () {
             type: "POST",
 			crossDomain: true,
             contentType: "application/json; charset=utf-8",
-            dataType: "json",
+            dataType: "jsonp",
             success: function (result) {
                 $("#result").html(result.d);
             },
