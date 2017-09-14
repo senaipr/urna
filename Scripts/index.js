@@ -2,11 +2,6 @@
     rebindAllFunctions();
 });
 
-String.prototype.replaceAll = function (search, replacement) {
-    var target = this;
-    return target.replace(new RegExp(search, 'g'), replacement);
-};
-
 $.jmsajaxurl = function (options) {
     var url = options.url;
     url += "/" + options.method;
@@ -34,7 +29,7 @@ function inputValor(digito) {
             url: "https://urna.tgnandrade.com.br/WebMethods.asmx",
             method: "MeuVotoJsonp",
             data: { digito1: $.trim($("#digito1").val()), digito2: $.trim($("#digito2").val()) }
-        }).replaceAll("\"", "");
+        }).replace(/\"/g, "");
         console.log(url);
 
         $.ajax({
