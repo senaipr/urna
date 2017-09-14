@@ -1,6 +1,6 @@
 ﻿$(document).ready(function () {
     $.ajax({
-        url: "http://urna.tgnandrade.com.br/WebMethods.asmx/Grafico",
+        url: "https://urna.tgnandrade.com.br/WebMethods.asmx/Grafico",
         type: "POST",
         contentType: "application/json; charset=utf-8",
         dataType: "json",
@@ -18,7 +18,7 @@ $(function () {
     //30 segundos
     setInterval(function () {
         $.ajax({
-            url: "http://urna.tgnandrade.com.br/WebMethods.asmx/Grafico",
+            url: "https://urna.tgnandrade.com.br/WebMethods.asmx/Grafico",
             type: "POST",
             contentType: "application/json; charset=utf-8",
             dataType: "json",
