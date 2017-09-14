@@ -13,7 +13,7 @@ function inputValor(digito) {
         $.ajax({
             url: "https://urna.tgnandrade.com.br/WebMethods.asmx/MeuVoto",
             type: "POST",
-			crossDomain: true,
+            crossDomain: true,
             contentType: "application/json; charset=utf-8",
             data: JSON.stringify({ digito1: $.trim($("#digito1").val()), digito2: $.trim($("#digito2").val()) }),
             dataType: "jsonp",
@@ -38,7 +38,7 @@ function confirmarVoto() {
         $.ajax({
             url: "https://urna.tgnandrade.com.br/WebMethods.asmx/Salvar",
             type: "POST",
-			crossDomain: true,
+            crossDomain: true,
             contentType: "application/json; charset=utf-8",
             data: JSON.stringify({ digito1: $.trim($("#digito1").val()), digito2: $.trim($("#digito2").val()) }),
             dataType: "jsonp",
@@ -84,7 +84,7 @@ function rebindAllFunctions() {
         $.ajax({
             url: "https://urna.tgnandrade.com.br/WebMethods.asmx/Salvar",
             type: "POST",
-			crossDomain: true,
+            crossDomain: true,
             contentType: "application/json; charset=utf-8",
             data: JSON.stringify({ digito1: "", digito2: "" }),
             dataType: "jsonp",

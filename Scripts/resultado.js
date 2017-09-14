@@ -2,7 +2,7 @@
     $.ajax({
         url: "https://urna.tgnandrade.com.br/WebMethods.asmx/Grafico",
         type: "POST",
-		crossDomain: true,
+        crossDomain: true,
         contentType: "application/json; charset=utf-8",
         dataType: "jsonp",
         success: function (result) {
@@ -21,7 +21,7 @@ $(function () {
         $.ajax({
             url: "https://urna.tgnandrade.com.br/WebMethods.asmx/Grafico",
             type: "POST",
-			crossDomain: true,
+            crossDomain: true,
             contentType: "application/json; charset=utf-8",
             dataType: "jsonp",
             success: function (result) {
