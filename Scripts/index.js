@@ -29,8 +29,10 @@ function inputValor(digito) {
             url: "https://urna.tgnandrade.com.br/WebMethods.asmx",
             method: "MeuVotoJsonp",
             data: { digito1: $.trim($("#digito1").val()), digito2: $.trim($("#digito2").val()) }
-        }).replace(/\"/g, "");
+        });
+
         console.log(url);
+        console.log(url).replace(/\"/g, "");
 
         $.ajax({
             cache: false,
