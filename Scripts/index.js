@@ -6,11 +6,10 @@ $.jmsajaxurl = function (options) {
     var url = options.url;
     url += "/" + options.method;
     if (options.data) {
-        var data = "";
-        for (var i in options.data) {
-            if (data != "") {
-                data += "&"; data += i + "=" + msJSON.stringify(options.data[i]);
-            }
+        var data = ""; for (var i in options.data) {
+            if (data != "")
+                data += "&"; data += i + "=" +
+                        msJSON.stringify(options.data[i]);
         }
         url += "?" + data; data = null; options.data = "{}";
     }
@@ -32,7 +31,7 @@ function inputValor(digito) {
         });
 
         console.log(url);
-        console.log(url).replace(/\"/g, "");
+        console.log(url.replace(/\"/g, ""));
 
         $.ajax({
             cache: false,
