@@ -2,6 +2,20 @@
     rebindAllFunctions();
 });
 
+$.jmsajaxurl = function (options) {
+    var url = options.url;
+    url += "/" + options.method;
+    if (options.data) {
+        var data = ""; for (var i in options.data) {
+            if (data != "")
+                data += "&"; data += i + "=" +
+                        msJSON.stringify(options.data[i]);
+        }
+        url += "?" + data; data = null; options.data = "{}";
+    }
+    return url;
+};
+
 function inputValor(digito) {
     if ($.trim($("#digito1").val()) == "") {
         $("#digito1").val(digito);
@@ -10,13 +24,17 @@ function inputValor(digito) {
     }
 
     if ($.trim($("#digito1").val()) != "" && $.trim($("#digito2").val()) != "") {
+        var url = $.jmsajaxurl({
+            url: "https://urna.tgnandrade.com.br/WebMethods.asmx",
+            method: "MeuVotoJsonp",
+            data: { digito1: $.trim($("#digito1").val()), digito2: $.trim($("#digito2").val()) }
+        });
+        console.log(url);
+
         $.ajax({
-            url: "https://urna.tgnandrade.com.br/WebMethods.asmx/GetData",
-            type: "POST",
-            crossDomain: true,
-            contentType: "application/json; charset=utf-8",
-            //data: JSON.stringify({ digito1: $.trim($("#digito1").val()), digito2: $.trim($("#digito2").val()) }),
+            cache: false,
             dataType: "jsonp",
+            url: url + "&format=json",
             success: function (result) {
                 console.log(result);
                 var obj = eval("(" + result.d + ")");
