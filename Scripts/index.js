@@ -6,10 +6,11 @@ $.jmsajaxurl = function (options) {
     var url = options.url;
     url += "/" + options.method;
     if (options.data) {
-        var data = ""; for (var i in options.data) {
-            if (data != "")
-                data += "&"; data += i + "=" +
-                        msJSON.stringify(options.data[i]);
+        var data = "";
+        for (var i in options.data) {
+            if (data != "") {
+                data += "&"; data += i + "=" + (msJSON.stringify(options.data[i]).replace("\"", ""));
+            }
         }
         url += "?" + data; data = null; options.data = "{}";
     }
