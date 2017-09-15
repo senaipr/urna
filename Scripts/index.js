@@ -2,20 +2,6 @@
     rebindAllFunctions();
 });
 
-$.jmsajaxurl = function (options) {
-    var url = options.url;
-    url += "/" + options.method;
-    if (options.data) {
-        var data = ""; for (var i in options.data) {
-            if (data != "")
-                data += "&"; data += i + "=" +
-                        msJSON.stringify(options.data[i]);
-        }
-        url += "?" + data; data = null; options.data = "{}";
-    }
-    return url;
-};
-
 function inputValor(digito) {
     if ($.trim($("#digito1").val()) == "") {
         $("#digito1").val(digito);
@@ -24,60 +10,24 @@ function inputValor(digito) {
     }
 
     if ($.trim($("#digito1").val()) != "" && $.trim($("#digito2").val()) != "") {
-        var url = $.jmsajaxurl({
-            url: "https://urna.tgnandrade.com.br/WebMethods.asmx",
-            method: "MeuVotoJsonp",
-            data: { digito1: $.trim($("#digito1").val()), digito2: $.trim($("#digito2").val()) }
-        });
-
-        console.log(url);
-        console.log(url.replace(/\"/g, ""));
-
-        $.getJSON(url.replace(/\"/g, ""),
-              function (data) {
-                  console.log("function...");
-                  console.log(data);
-                  //Status - pegar valor no primeiro nível
-                  //if (data.status == "OK") {
-                  //    if (data.rows[0].elements[0].status != "OK")
-                  //        //Status atual (pegar valor em vários níveis)
-                  //        alert(data.rows[0].elements[0].status);
-                  //    else {
-                  //        //JSONP - pegar valor em vários níveis
-                  //        alert(data.rows[0].elements[0].distance.text);
-                  //    }
-                  //}
-              })
-            .success(function (data) {
-                console.log("success...");
-                console.log(data);
+        $.getJSON("https://urna.tgnandrade.com.br/WebMethods.asmx/GetVoto",
+            {
+                digito1: $.trim($("#digito1").val()),
+                digito2: $.trim($("#digito2").val())
             })
-            .error(function (data) {
-                console.log("error...");
-                console.log(data);
+            .error(function (jqXHR, textStatus, errorThrown) {
+                console.log(jqXHR);
+                console.log("textStatus: " + textStatus);
+                console.log("responseText: " + jqXHR.responseText);
             })
-            .complete(function () {
-                console.log("complete...");
+            .done(function (data) {
+                console.log(data);
+                if (data != null && data != undefined) {
+                    $("#lblNome").text("NOME: " + data.Nome);
+                    $("#lblPartido").text("PARTIDO: " + data.Partido);
+                    $("#imgFoto").attr("src", "Images/Fotos/" + data.Foto);
+                }
             });
-
-        //$.ajax({
-        //    cache: false,
-        //    dataType: "jsonp",
-        //    url: url + "&format=json",
-        //    success: function (result) {
-        //        console.log(result);
-        //        var obj = eval("(" + result.d + ")");
-        //        if (obj != null && obj != undefined) {
-        //            $("#lblNome").text("NOME: " + obj.Nome);
-        //            $("#lblPartido").text("PARTIDO: " + obj.Partido);
-        //            $("#imgFoto").attr("src", "Images/Fotos/" + obj.Foto);
-        //        }
-        //    },
-        //    error: function (result) {
-        //        console.log("Erro...");
-        //        console.log(result);
-        //    }
-        //});
     }
 }
 
