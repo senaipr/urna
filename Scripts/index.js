@@ -35,25 +35,29 @@ function inputValor(digito) {
 
         $.getJSON(url.replace(/\"/g, ""),
               function (data) {
+                  console.log("function...");
+                  console.log(data);
                   //Status - pegar valor no primeiro nível
-                  if (data.status == "OK") {
-                      if (data.rows[0].elements[0].status != "OK")
-                          //Status atual (pegar valor em vários níveis)
-                          alert(data.rows[0].elements[0].status);
-                      else {
-                          //JSONP - pegar valor em vários níveis
-                          alert(data.rows[0].elements[0].distance.text);
-                      }
-                  }
+                  //if (data.status == "OK") {
+                  //    if (data.rows[0].elements[0].status != "OK")
+                  //        //Status atual (pegar valor em vários níveis)
+                  //        alert(data.rows[0].elements[0].status);
+                  //    else {
+                  //        //JSONP - pegar valor em vários níveis
+                  //        alert(data.rows[0].elements[0].distance.text);
+                  //    }
+                  //}
               })
-            .success(function () {
-                alert("Sucesso");
+            .success(function (data) {
+                console.log("success...");
+                console.log(data);
             })
-            .error(function () {
-                alert("Erro");
+            .error(function (data) {
+                console.log("error...");
+                console.log(data);
             })
             .complete(function () {
-                alert("Completo");
+                console.log("complete...");
             });
 
         //$.ajax({
