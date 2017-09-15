@@ -33,24 +33,47 @@ function inputValor(digito) {
         console.log(url);
         console.log(url.replace(/\"/g, ""));
 
-        $.ajax({
-            cache: false,
-            dataType: "jsonp",
-            url: url + "&format=json",
-            success: function (result) {
-                console.log(result);
-                var obj = eval("(" + result.d + ")");
-                if (obj != null && obj != undefined) {
-                    $("#lblNome").text("NOME: " + obj.Nome);
-                    $("#lblPartido").text("PARTIDO: " + obj.Partido);
-                    $("#imgFoto").attr("src", "Images/Fotos/" + obj.Foto);
-                }
-            },
-            error: function (result) {
-                console.log("Erro...");
-                console.log(result);
-            }
-        });
+        $.getJSON(url.replace(/\"/g, ""),
+              function (data) {
+                  //Status - pegar valor no primeiro nível
+                  if (data.status == "OK") {
+                      if (data.rows[0].elements[0].status != "OK")
+                          //Status atual (pegar valor em vários níveis)
+                          alert(data.rows[0].elements[0].status);
+                      else {
+                          //JSONP - pegar valor em vários níveis
+                          alert(data.rows[0].elements[0].distance.text);
+                      }
+                  }
+              })
+            .success(function () {
+                alert("Sucesso");
+            })
+            .error(function () {
+                alert("Erro");
+            })
+            .complete(function () {
+                alert("Completo");
+            });
+
+        //$.ajax({
+        //    cache: false,
+        //    dataType: "jsonp",
+        //    url: url + "&format=json",
+        //    success: function (result) {
+        //        console.log(result);
+        //        var obj = eval("(" + result.d + ")");
+        //        if (obj != null && obj != undefined) {
+        //            $("#lblNome").text("NOME: " + obj.Nome);
+        //            $("#lblPartido").text("PARTIDO: " + obj.Partido);
+        //            $("#imgFoto").attr("src", "Images/Fotos/" + obj.Foto);
+        //        }
+        //    },
+        //    error: function (result) {
+        //        console.log("Erro...");
+        //        console.log(result);
+        //    }
+        //});
     }
 }
 
