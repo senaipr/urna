@@ -34,7 +34,7 @@ function inputValor(digito) {
 function confirmarVoto() {
     if ($.trim($("#digito1").val()) != "" && $.trim($("#digito2").val()) != "") {
         $.ajax({
-            url: "https://urna.tgnandrade.com.br/WebMethods.asmx/Salvar",
+            url: "https://urna.tgnandrade.com.br/WebMethods.asmx/SalvarVoto",
             type: "POST",
             crossDomain: true,
             contentType: "application/json; charset=utf-8",
@@ -80,7 +80,7 @@ function rebindAllFunctions() {
         e.preventDefault();
         e.stopPropagation();
         $.ajax({
-            url: "https://urna.tgnandrade.com.br/WebMethods.asmx/Salvar",
+            url: "https://urna.tgnandrade.com.br/WebMethods.asmx/SalvarVoto",
             type: "POST",
             crossDomain: true,
             contentType: "application/json; charset=utf-8",
